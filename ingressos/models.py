@@ -85,3 +85,16 @@ class SubEvento(models.Model):
 
     def get_absolute_url(self):
         return reverse("subevento_detail", kwargs={"pk": self.pk})
+    
+
+class Participante(models.Model):
+    pass
+
+
+class EventoParticipante(models.Model):
+    evento = models.ForeignKey('Evento', on_delete=models.CASCADE)
+    participante = models.ForeignKey('Participante', on_delete=models.CASCADE)
+
+
+class CodigoPromocional(models.Model):
+    evento = models.ForeignKey('Evento', on_delete=models.CASCADE)
