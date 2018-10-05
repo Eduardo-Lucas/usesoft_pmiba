@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,6 +14,7 @@
   </head>
   <body>
 
+  <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">Usesoft-PMI BA</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -23,16 +26,43 @@
               <ul class="navbar-nav mr-auto">
 
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Criar Evento</a>
+                      <a class="nav-link" href="#">{% trans 'Criar Evento' %}</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Meus Eventos</a>
+                      <a class="nav-link" href="#">{% trans 'Meus Eventos' %}</a>
                   </li>
 
               </ul>
 
           </div>
+
+          {% get_current_language as LANGUAGE_CODE %}
+
+          <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input type="hidden" name="next" value="{{ redirect_to }}">
+
+                <select name="language" id="">
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{language.code}}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                            {{ language.name_local }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+              {% if LANGUAGE_CODE == 'pt-br' %}
+                <img src="{% static 'flags/br.png' %}" alt="Brasil" title="Brasil">
+              {% elif LANGUAGE_CODE == 'en' %}
+                <img src="{% static 'flags/us.png' %}" alt="USA" title="USA">
+              {% else %}
+                <img src="{% static 'flags/es.png' %}" alt="España" title="España">
+              {% endif  %}
+
+              <input type="submit" value="{% trans 'Confirma' %}">
+        </form>
       </nav>
+  </div>
 
       {% block content %}
       {% endblock %}

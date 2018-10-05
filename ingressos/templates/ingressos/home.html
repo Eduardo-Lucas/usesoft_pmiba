@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
         <nav class="navbar navbar-dark bg-dark">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar eventos" aria-label="Search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar por cidade" aria-label="Search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Todas as datas" aria-label="Search">
-                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Pesquisar</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="{% trans 'Pesquisar eventos' %}" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="{% trans 'Pesquisar por cidade' %}" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="{% trans 'Todas as datas' %}" aria-label="Search">
+                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">{% trans 'Pesquisar' %}</button>
             </form>
         </nav>
+
+
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

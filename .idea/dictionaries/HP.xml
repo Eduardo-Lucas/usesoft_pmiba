@@ -2,11 +2,13 @@
   <dictionary name="HP">
     <words>
       <w>endblock</w>
+      <w>endfor</w>
       <w>evento</w>
       <w>eventos</w>
       <w>grátis</w>
       <w>ingresso</w>
       <w>ingressos</w>
+      <w>meus</w>
       <w>página</w>
       <w>subevento</w>
       <w>subeventotipo</w>
