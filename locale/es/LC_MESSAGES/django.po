@@ -1261,6 +1261,10 @@ msgstr "Buscar"
 msgid "Confirma"
 msgstr "Confirma"
 
+#: .\ingressos\templates\base.html:16
+msgid "idioma"
+msgstr "Idioma"
+
 
 #: .\ingressos\views.py:6
 msgid "Bem-vindo."
