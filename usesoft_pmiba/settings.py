@@ -31,7 +31,7 @@ DEBUG = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['usesoft-pmiba.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['usesoft-pmiba.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -47,23 +47,39 @@ INSTALLED_APPS = [
     # The following apps are required:
     'django.contrib.sites',
 
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     # ... include the providers you want to enable:
-    # 'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+    'django_extensions',
     # 'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.instagram',
     # 'allauth.socialaccount.providers.linkedin',
     # 'allauth.socialaccount.providers.spotify',
     # 'allauth.socialaccount.providers.twitter',
     
-    'ingressos',
     
+    
+    'users',
+    'ingressos',
     
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
 SITE_ID = 1
+
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+# facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '241515540055930'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c26475750cd1faac41e847211ff2a002'  # app key
+
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,7 +97,7 @@ ROOT_URLCONF = 'usesoft_pmiba.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,12 +111,10 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
 
 WSGI_APPLICATION = 'usesoft_pmiba.wsgi.application'
 
@@ -108,31 +122,31 @@ WSGI_APPLICATION = 'usesoft_pmiba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        # 'ENGINE': 'tenant_schemas.postgresql_backend',
-#
-#        # Or path to database file if using sqlite3.
-#        'NAME': config('DB_NAME'),
-#        'USER': config('DB_USER'),
-#        'PASSWORD': config('DB_PASSWORD'),
-#
-#        # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-#        'HOST': '',
-#
-#        # Set to empty string for default
-#        'PORT': '',
-#    }
-#
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+   'default': {
+       # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       # 'ENGINE': 'tenant_schemas.postgresql_backend',
+
+       # Or path to database file if using sqlite3.
+       'NAME': config('DB_NAME'),
+       'USER': config('DB_USER'),
+       'PASSWORD': config('DB_PASSWORD'),
+
+       # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+       'HOST': '',
+
+       # Set to empty string for default
+       'PORT': '',
+   }
+
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 
 
 # Password validation
