@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7b2f93d-f76c-4578-8f37-8e2a31940d3b" name="Default" comment="" />
+    <list default="true" id="f7b2f93d-f76c-4578-8f37-8e2a31940d3b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usesoft_pmiba/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/usesoft_pmiba/settings.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +44,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/usesoft_pmiba/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+            <state relative-caret-position="331">
+              <caret line="142" column="1" lean-forward="true" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
               <folding>
                 <element signature="e#314#323#0" expanded="true" />
               </folding>
@@ -214,6 +217,17 @@
             <path>
               <item name="usesoft_pmiba" type="b2602c69:ProjectViewProjectNode" />
               <item name="usesoft_pmiba" type="462c0819:PsiDirectoryNode" />
+              <item name="ingressos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="usesoft_pmiba" type="b2602c69:ProjectViewProjectNode" />
+              <item name="usesoft_pmiba" type="462c0819:PsiDirectoryNode" />
+              <item name="ingressos" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="usesoft_pmiba" type="b2602c69:ProjectViewProjectNode" />
+              <item name="usesoft_pmiba" type="462c0819:PsiDirectoryNode" />
               <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,6 +304,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17113096" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -298,7 +313,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.6287129" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.6287129" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -683,8 +698,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/usesoft_pmiba/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+        <state relative-caret-position="331">
+          <caret line="142" column="1" lean-forward="true" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
           <folding>
             <element signature="e#314#323#0" expanded="true" />
           </folding>
