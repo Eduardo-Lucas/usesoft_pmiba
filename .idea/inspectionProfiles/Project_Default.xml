@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="16">
+          <list size="17">
             <item index="0" class="java.lang.String" itemvalue="autopep8" />
             <item index="1" class="java.lang.String" itemvalue="Django" />
             <item index="2" class="java.lang.String" itemvalue="whitenoise" />
@@ -21,6 +21,7 @@
             <item index="13" class="java.lang.String" itemvalue="urllib3" />
             <item index="14" class="java.lang.String" itemvalue="django-extensions" />
             <item index="15" class="java.lang.String" itemvalue="idna" />
+            <item index="16" class="java.lang.String" itemvalue="q" />
           </list>
         </value>
       </option>

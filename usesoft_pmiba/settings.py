@@ -51,9 +51,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # ... include the providers you want to enable:
-    'allauth.socialaccount.providers.github',
-    'django_extensions',
     # 'allauth.socialaccount.providers.google',
+    'django_extensions',
     # 'allauth.socialaccount.providers.instagram',
     # 'allauth.socialaccount.providers.linkedin',
     # 'allauth.socialaccount.providers.spotify',
@@ -68,6 +67,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 SITE_ID = 1
 
@@ -75,9 +76,6 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# facebook
-SOCIAL_AUTH_FACEBOOK_KEY = '241515540055930'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'c26475750cd1faac41e847211ff2a002'  # app key
 
 # ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
@@ -122,31 +120,31 @@ WSGI_APPLICATION = 'usesoft_pmiba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        # 'ENGINE': 'tenant_schemas.postgresql_backend',
-#
-#        # Or path to database file if using sqlite3.
-#        'NAME': config('DB_NAME'),
-#        'USER': config('DB_USER'),
-#        'PASSWORD': config('DB_PASSWORD'),
-#
-#        # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-#        'HOST': '',
-#
-#        # Set to empty string for default
-#        'PORT': '',
-#    }
-#
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+   'default': {
+       # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       # 'ENGINE': 'tenant_schemas.postgresql_backend',
+
+       # Or path to database file if using sqlite3.
+       'NAME': config('DB_NAME'),
+       'USER': config('DB_USER'),
+       'PASSWORD': config('DB_PASSWORD'),
+
+       # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+       'HOST': '',
+
+       # Set to empty string for default
+       'PORT': '',
+   }
+
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 
 
 # Password validation
