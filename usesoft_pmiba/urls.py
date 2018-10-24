@@ -9,6 +9,7 @@ urlpatterns = [
     # User Management
     path('users', include('users.urls')),
     path('accounts/', include('allauth.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
 urlpatterns += i18n_patterns(
     path('', include('ingressos.urls')), prefix_default_language=True

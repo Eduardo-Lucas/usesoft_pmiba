@@ -1,9 +1,20 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
+from tinymce import models as tinymce_models
+
+
+class Organizador(models.Model):
+    url = models.CharField('Sua URL (endereço', max_length=100)
+    logo = models.ImageField('Imagem')
+    nome = models.CharField('Nome do organizador (anfitrião)', max_length=100)
+    mostra_nome = models.BooleanField('Mostrar o nome abaixo do logo', default=False)
+    descricao = tinymce_models.HTMLField()
+    eventos_passados = models.BooleanField('Mostrar eventos passados', default=True)
 
 
 class Evento(models.Model):
+    organizador = models.ForeignKey('Organizador', default=1, on_delete=models.CASCADE)
     PUBLICO = 'PU'
     PRIVADO = 'PR'
     TIPO_DE_EVENTO_CHOICES = (
@@ -11,11 +22,13 @@ class Evento(models.Model):
         ('PRIVADO', 'Privado'),
     )
     nome = models.CharField(max_length=100, )
+    imagem = models.BooleanField(default=False)
     data_inicio = models.DateTimeField(
         _("Data de Início"), auto_now=False, auto_now_add=False)
     data_termino = models.DateTimeField(
         _("Data de Término"), auto_now=False, auto_now_add=False)
-    descricao = models.CharField(max_length=500, )
+    descricao = tinymce_models.HTMLField()
+    
     publico_privado = models.CharField(
         max_length=2, choices=TIPO_DE_EVENTO_CHOICES, default=PUBLICO)
     local = models.CharField(max_length=100, )
@@ -25,11 +38,13 @@ class Evento(models.Model):
     bairro = models.CharField(max_length=20, blank=True, null=True)
     cidade = models.CharField(max_length=20, blank=True, null=True)
     uf = models.CharField(max_length=2, blank=True, null=True)
+    absorver_taxa_servico = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("Evento")
         verbose_name_plural = _("Eventos")
 
+    
     def __str__(self):
         return self.nome
 
@@ -65,7 +80,7 @@ class TipoIngresso(models.Model):
         return reverse("tipoingresso_detail", kwargs={"pk": self.pk})
 
 
-class SubEvento(models.Model):
+class Ingresso(models.Model):
     tipoingresso = models.ForeignKey('TipoIngresso', on_delete=models.CASCADE)
     subeventotipo = models.ForeignKey('SubEventoTipo', on_delete=models.CASCADE)
     evento = models.ForeignKey('Evento', on_delete=models.CASCADE)

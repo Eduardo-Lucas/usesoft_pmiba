@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.spotify',
     # 'allauth.socialaccount.providers.twitter',
     
-    
+    'tinymce',
     
     'users',
     'ingressos',

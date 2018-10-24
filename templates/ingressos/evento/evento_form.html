@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-md-offset-2"> <!-- Header -->
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </div>
+
+<form action="" method="post">{% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">1. Nome e imagem do evento</h5>
+                    <p class="card-text">Nome do Evento: {{form.nome}}</p>
+                    <p class="card-text">{{form.imagem}} Incluir banner ou logo</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">2. Quando</h5>
+                    <p class="card-text">Início do Evento: {{form.data_inicio}} Término do Evento: {{ form.data_termino }}</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">4. Onde</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">3. Ingressos</h5>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Tipo de Ingresso</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Taxa</th>
+                          <th scope="col">Preço de Venda</th>
+                          <th scope="col">Quantidade</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <td colspan="5">Pelo menos um tipo de ingresso deve ser criado para que seu evento possa ser publicado</td>
+                      </tbody>
+                    </table>
+                    <button type="button" class="btn btn-outline-warning">Criar novo ingresso</button>
+                    <p></p>
+                    <p class="card-text">{{form.absorver_taxa_servico}} Absorver a taxa de serviço
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-html="true"
+                           title="Ao selecionar esta opção, a taxa de serviço será incluída no preço final de venda do ingresso e não será mostrada ao comprador.">
+
+                        </i>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">5. Descrição do evento (programação)</h5>
+                    <p>{{form.descricao}}</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">6. Organizador</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">7. Definições do evento</h5>
+                    <div class="card-text">bla bla bla</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div align="right">
+                <input type="submit" value="Gravar"/>
+    </div>
+</div>
+
+ </form>
+
+{% endblock %}
