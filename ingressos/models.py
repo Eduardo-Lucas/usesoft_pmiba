@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
-from tinymce import models as tinymce_models
 
 
 class Organizador(models.Model):
@@ -9,7 +8,7 @@ class Organizador(models.Model):
     logo = models.ImageField('Imagem')
     nome = models.CharField('Nome do organizador (anfitrião)', max_length=100)
     mostra_nome = models.BooleanField('Mostrar o nome abaixo do logo', default=False)
-    descricao = tinymce_models.HTMLField()
+    descricao = models.TextField('Descrição', max_length=100)
     eventos_passados = models.BooleanField('Mostrar eventos passados', default=True)
 
 
@@ -27,7 +26,7 @@ class Evento(models.Model):
         _("Data de Início"), auto_now=False, auto_now_add=False)
     data_termino = models.DateTimeField(
         _("Data de Término"), auto_now=False, auto_now_add=False)
-    descricao = tinymce_models.HTMLField()
+    descricao = models.TextField('Descrição do Evento', max_length=100)
     
     publico_privado = models.CharField(
         max_length=2, choices=TIPO_DE_EVENTO_CHOICES, default=PUBLICO)
