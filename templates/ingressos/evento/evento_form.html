@@ -2,17 +2,21 @@
 
 {% block content %}
 
-    <div class="col-md-offset-2"> <!-- Header -->
+<div class="col-md-offset-2"> <!-- Header -->
 
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-    </div>
+</div>
+
+<div class="container">
+    <h1>Criar Evento</h1>
+</div>
 
 <form action="" method="post">{% csrf_token %}
 <div class="container">
@@ -94,7 +98,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">6. Organizador</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">{{form.organizador}}</p>
 
                 </div>
             </div>
@@ -110,8 +114,8 @@
             </div>
         </div>
     </div>
-    <div align="right">
-                <input type="submit" value="Gravar"/>
+    <div>
+        <input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Gravar"/>
     </div>
 </div>
 

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-md-offset-2"> <!-- Header -->
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </div>
+
+<div class="container" style="border:thin">
+    <h1>Página do Organizador</h1>
+</div>
+
+
+<div class="container">
+<form action="" method="post">{% csrf_token %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">1. Endereço da Página</h5>
+                    <p class="card-text">Sua URL (endereço): {{form.url}}</p>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">2. Imagem e Nome</h5>
+                    <p class="card-text">Imagem: {{form.logo}}</p>
+                    <p class="card-text">Nome  : {{form.nome}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">3. Descrição</h5>
+                    <p>{{form.descricao}}</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">4. Opções avançadas</h5>
+                    <p class="card-text">{{form.eventos_passados}} Mostrar eventos passados</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Gravar"/>
+    </div>
+</form>
+</div>
+
+
+
+{% endblock %}

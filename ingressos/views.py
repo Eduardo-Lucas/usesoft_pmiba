@@ -3,7 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.views.generic import CreateView
 
-from ingressos.models import Evento
+from ingressos.models import Evento, Organizador
 
 
 def home(request):
@@ -23,3 +23,9 @@ class EventoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Evento
     fields = '__all__'
     template_name = 'ingressos/evento/evento_form.html'
+
+
+class OrganizadorCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    model = Organizador
+    fields = '__all__'
+    template_name = 'ingressos/organizador/organizador_form.html'

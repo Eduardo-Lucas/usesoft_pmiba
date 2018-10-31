@@ -2,17 +2,50 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
+from users.models import CustomUser
+
 
 class Organizador(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
     url = models.CharField('Sua URL (endereço', max_length=100)
     logo = models.ImageField('Imagem')
     nome = models.CharField('Nome do organizador (anfitrião)', max_length=100)
     mostra_nome = models.BooleanField('Mostrar o nome abaixo do logo', default=False)
     descricao = models.TextField('Descrição', max_length=100)
     eventos_passados = models.BooleanField('Mostrar eventos passados', default=True)
+    
+
+class Categoria(models.Model):
+    nome = models.name = models.CharField(max_length=50, )
+
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
+
+    def __str__(self):
+        return self.nome
+
+    def get_absolute_url(self):
+        return reverse("categoria_detail", kwargs={"pk": self.pk})
+
+
+class SubCategoria(models.Model):
+    nome = models.name = models.CharField(max_length=50, )
+
+    class Meta:
+        verbose_name = "Subcategoria"
+        verbose_name_plural = "Subcategorias"
+
+    def __str__(self):
+        return self.nome
+
+    def get_absolute_url(self):
+        return reverse("subcategoria_detail", kwargs={"pk": self.pk})
 
 
 class Evento(models.Model):
+    categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, default=1)
+    subcategoria = models.ForeignKey('SubCategoria', on_delete=models.CASCADE, null=True, blank=True)
     organizador = models.ForeignKey('Organizador', default=1, on_delete=models.CASCADE)
     PUBLICO = 'PU'
     PRIVADO = 'PR'
@@ -42,27 +75,12 @@ class Evento(models.Model):
     class Meta:
         verbose_name = _("Evento")
         verbose_name_plural = _("Eventos")
-
     
     def __str__(self):
         return self.nome
 
     def get_absolute_url(self):
         return reverse("evento_detail", kwargs={"pk": self.pk})
-
-
-class SubEventoTipo(models.Model):
-    nome = models.name = models.CharField(max_length=50, )
-
-    class Meta:
-        verbose_name = "Tipo de SubEvento"
-        verbose_name_plural = "Tipos de SubEventos"
-
-    def __str__(self):
-        return self.nome
-
-    def get_absolute_url(self):
-        return reverse("subeventotipo_detail", kwargs={"pk": self.pk})
 
 
 class TipoIngresso(models.Model):
@@ -81,7 +99,6 @@ class TipoIngresso(models.Model):
 
 class Ingresso(models.Model):
     tipoingresso = models.ForeignKey('TipoIngresso', on_delete=models.CASCADE)
-    subeventotipo = models.ForeignKey('SubEventoTipo', on_delete=models.CASCADE)
     evento = models.ForeignKey('Evento', on_delete=models.CASCADE)
     nome = models.name = models.CharField(max_length=50, )
     preco = models.DecimalField(_("Preço"), max_digits=10, decimal_places=2)

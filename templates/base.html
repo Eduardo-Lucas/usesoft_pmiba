@@ -42,9 +42,8 @@
                           <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
+                              <a class="dropdown-item" href="{% url 'ingressos:organizador_add' %}">Página do Organizador</a>
+                              <a class="dropdown-item" href="#">Minha Conta</a>
                               <div role="separator" class="dropdown-divider"></div>
                               <a class="dropdown-item" href="{% url 'ingressos:logout' %}">Sair</a>
                             </div>
